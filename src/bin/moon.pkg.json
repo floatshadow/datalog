@@ -1,0 +1,13 @@
+{
+  "is-main": true,
+  "import": [
+    "Yoorkin/ArgParser",
+    "moonbitlang/x/sys",
+    "moonbitlang/x/fs",
+    "floatshadow/datalog/util",
+    "floatshadow/datalog/syntax",
+    "floatshadow/datalog/lexer",
+    "floatshadow/datalog/parser",
+    "floatshadow/datalog/ast_eval"
+  ]
+}

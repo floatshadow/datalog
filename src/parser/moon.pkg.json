@@ -1,0 +1,13 @@
+{
+  "import": [
+    "floatshadow/datalog/syntax",
+    "floatshadow/datalog/util"
+  ],
+  "pre-build": [
+    {
+      "command": "$mod_dir/.mooncakes/moonbitlang/yacc/moonyacc $input -o $output",
+      "input": "parser.mbty",
+      "output": "parser.mbt"
+    }
+  ]
+}

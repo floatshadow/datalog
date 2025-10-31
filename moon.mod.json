@@ -1,0 +1,18 @@
+{
+  "name": "floatshadow/datalog",
+  "version": "0.1.0",
+  "deps": {
+    "moonbitlang/x": "0.4.36",
+    "Yoorkin/ArgParser": "0.1.11",
+    "moonbitlang/yacc": "0.7.2"
+  },
+  "bin-deps": {
+    "moonbitlang/yacc": "0.7.2"
+  },
+  "readme": "README.md",
+  "repository": "",
+  "license": "GPLv3",
+  "keywords": [],
+  "description": "",
+  "source": "src"
+}

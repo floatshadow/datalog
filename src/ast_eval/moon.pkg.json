@@ -1,0 +1,6 @@
+{
+  "import": [
+    "floatshadow/datalog/util",
+    "floatshadow/datalog/syntax"
+  ]
+}

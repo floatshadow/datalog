@@ -1,0 +1,7 @@
+ancestor(X, Y) :- parent(X, Y).
+ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+
+parent(xerces, brooke).
+parent(brooke, damocles).
+
+ancestor(xerces, X)?

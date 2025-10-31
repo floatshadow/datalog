@@ -1,0 +1,178 @@
+%{
+typealias @syntax.Constant
+typealias @syntax.Term
+typealias @syntax.Literal
+typealias @syntax.Clause
+typealias @syntax.Statement
+typealias @util.Loc
+typealias @util.Interval
+typealias @util.Ranged
+typealias @list.List
+typealias @util.List1
+
+traitalias @util.HasRange
+%}
+
+%derive<Show> Token
+%derive<Show> ParseError
+%position<Loc>
+%start parse_file
+
+%token Eof
+%token <(Loc, String)> ErrorMsg
+
+%token<(Interval, String)> Id
+%token<(Interval, String)> Variable
+%token<(Interval, String)> StringLiteral
+%token<(Interval, Int)> IntLiteral
+
+
+%token<Interval> SymOpenParen       "("
+%token<Interval> SymCloseParen      ")"
+%token<Interval> SymColonDash       ":-"
+%token<Interval> SymComma           ","
+%token<Interval> SymEqual           "="
+%token<Interval> SymUnEqual         "!="
+%token<Interval> SymDot             "."
+%token<Interval> SymQuestion        "?"
+
+%token<Interval> KwTrue      "true"
+%token<Interval> KwFalse     "false"
+
+
+%type<List[Statement]> parse_file
+%type<Statement> Statement
+%type<List[Statement]> Statement0
+%type<List1[Statement]> Statement1
+
+%type<Ranged[Clause]> Clause
+%type<Ranged[Constant]> Constant
+%type<Ranged[Term]> Term
+%type<Ranged[Literal]> Literal
+
+%type<(Interval, String)> PredicateSym
+%type<List1[Ranged[Literal]]> Literals
+%type<List1[Ranged[Term]]> Terms
+
+%%
+
+
+
+parse_file
+  : Statement0 Eof  { $1 }
+  ;
+
+Statement0
+  :                                  { List::empty() }
+  | Statement1                       { $1.to_list() }
+  ;
+
+
+Statement1
+  : Statement Statement1           { $2.cons($1) }
+  | Statement                      { List1::singleton($1) }
+  ;
+
+
+(* statement *)
+Statement
+  : Clause "."                       { Statement::AssertS($1) }
+  | Literal "?"                      { Statement::QueryS($1) }
+  ;
+
+
+(* Level 1 : Clause *)
+Clause
+  : Literal                          { Ranged::new(Clause::{ head : $1, body : None }, HasRange::get_range($1)) }
+  | Literal ":-" Literals            { Ranged::new(Clause::{ head : $1, body : Some($3) }, HasRange::get_range($1)) }
+  ;
+
+Literals
+  : Literal                          { List1::singleton($1) }
+  | Literal "," Literals             { $3.cons($1) }
+  ;
+
+
+(* Level 2 : Literal *)
+Literal
+  : PredicateSym "(" ")"              {
+    Ranged::new(
+      Literal::{ predicate : Ranged::new_with_interval($1.1, $1.0), terms : None },
+      HasRange::get_range($1.0)
+    )
+  }
+  | PredicateSym "(" Terms ")"        {
+    Ranged::new(
+      Literal::{ predicate : Ranged::new_with_interval($1.1, $1.0), terms : Some($3) },
+      HasRange::get_range($1.0)
+    )
+  }
+  | PredicateSym                      {
+    Ranged::new(
+      Literal::{ predicate : Ranged::new_with_interval($1.1, $1.0), terms : None },
+      HasRange::get_range($1.0)
+    )
+  }
+  | Term "=" Term                     {
+    Ranged::new(
+      Literal::{ predicate : Ranged::new_with_interval("=", $2), terms : List1::from_array([$1, $3]) },
+      HasRange::get_range($2)
+    ) 
+  }
+  | Term "!=" Term                    {
+    Ranged::new(
+      Literal::{ predicate : Ranged::new_with_interval("!=", $2), terms : List1::from_array([$1, $3]) },
+      HasRange::get_range($2)
+    )
+  }
+
+PredicateSym
+  : Id                               { $1 }
+  | StringLiteral                    { $1 }
+  ;
+
+(* Terms separated by comma *)
+Terms
+  : Term                             { List1::singleton($1) }
+  | Term "," Terms                   { $3.cons($1) }
+  ;
+
+
+
+(* Level 3 : Term *)
+Term
+  : Variable                         { Ranged::new(Term::Var(Ranged::new_with_interval($1.1, $1.0)), HasRange::get_range($1.0)) }
+  | Constant                         { Ranged::new(Term::Const($1), HasRange::get_range($1)) }
+
+Constant
+  : Id                               {
+    Ranged::new(
+      Constant::IdentC(Ranged::new($1.1, HasRange::get_range($1.0))),
+      HasRange::get_range($1.0)
+    )
+  }
+  | StringLiteral                    {
+    Ranged::new(
+      Constant::StringC(Ranged::new($1.1, HasRange::get_range($1.0))),
+      HasRange::get_range($1.0)
+    )
+  }
+  | IntLiteral                       {
+    Ranged::new(
+      Constant::IntC(Ranged::new($1.1, HasRange::get_range($1.0))),
+      HasRange::get_range($1.0)
+    )
+  }
+  | "false"                          {
+    Ranged::new(
+      Constant::BoolC(Ranged::new(false, HasRange::get_range($1))),
+      HasRange::get_range($1)
+    )
+  }
+  | "true"                           {
+    Ranged::new(
+      Constant::BoolC(Ranged::new(true, HasRange::get_range($1))),
+      HasRange::get_range($1)
+    )
+  }
+  ;

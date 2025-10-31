@@ -1,0 +1,83 @@
+// [parser] parsed test/ancestor.dl successfully
+// [evaluator] Naive iteration 0
+// [evaluator] Current facts: @immut/hashmap.of([])
+// [evaluator] Processing rule "parent"("xerces", "brooke").
+// [evaluator]   Deduced fact "parent"("xerces", "brooke")
+// [evaluator] Processing rule "parent"("brooke", "damocles").
+// [evaluator]   Deduced fact "parent"("brooke", "damocles")
+// [evaluator] Processing rule "ancestor"("X", "Y") :- "parent"("X", "Y").
+// [evaluator]   Considering product ["parent"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Y") with fact "parent"("xerces", "brooke")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "brooke"), ("X", "xerces")])
+// [evaluator]   Deduced fact "ancestor"("xerces", "brooke")
+// [evaluator]   Considering product ["parent"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Y") with fact "parent"("brooke", "damocles")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "damocles"), ("X", "brooke")])
+// [evaluator]   Deduced fact "ancestor"("brooke", "damocles")
+// [evaluator] Processing rule "ancestor"("X", "Y") :- "parent"("X", "Z"), "ancestor"("Z", "Y").
+// [evaluator]   Considering product ["parent"("xerces", "brooke"), "ancestor"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("xerces", "brooke")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("brooke", "damocles")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "damocles"), ("X", "xerces"), ("Z", "brooke")])
+// [evaluator]   Deduced fact "ancestor"("xerces", "damocles")
+// [evaluator]   Considering product ["parent"("xerces", "brooke"), "ancestor"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("xerces", "brooke")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "brooke")
+// [evaluator]   Considering product ["parent"("brooke", "damocles"), "ancestor"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("brooke", "damocles")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("brooke", "damocles")
+// [evaluator]   Considering product ["parent"("brooke", "damocles"), "ancestor"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("brooke", "damocles")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "brooke")
+// [evaluator] New facts: @immut/hashmap.of([("parent", @immut/hashset.of(["parent"("xerces", "brooke"), "parent"("brooke", "damocles")])), ("ancestor", @immut/hashset.of(["ancestor"("xerces", "damocles"), "ancestor"("brooke", "damocles"), "ancestor"("xerces", "brooke")]))])
+// [evaluator] Naive iteration 1
+// [evaluator] Current facts: @immut/hashmap.of([("parent", @immut/hashset.of(["parent"("xerces", "brooke"), "parent"("brooke", "damocles")])), ("ancestor", @immut/hashset.of(["ancestor"("xerces", "damocles"), "ancestor"("brooke", "damocles"), "ancestor"("xerces", "brooke")]))])
+// [evaluator] Processing rule "parent"("xerces", "brooke").
+// [evaluator]   Deduced fact "parent"("xerces", "brooke")
+// [evaluator] Processing rule "parent"("brooke", "damocles").
+// [evaluator]   Deduced fact "parent"("brooke", "damocles")
+// [evaluator] Processing rule "ancestor"("X", "Y") :- "parent"("X", "Y").
+// [evaluator]   Considering product ["parent"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Y") with fact "parent"("xerces", "brooke")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "brooke"), ("X", "xerces")])
+// [evaluator]   Deduced fact "ancestor"("xerces", "brooke")
+// [evaluator]   Considering product ["parent"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Y") with fact "parent"("brooke", "damocles")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "damocles"), ("X", "brooke")])
+// [evaluator]   Deduced fact "ancestor"("brooke", "damocles")
+// [evaluator] Processing rule "ancestor"("X", "Y") :- "parent"("X", "Z"), "ancestor"("Z", "Y").
+// [evaluator]   Considering product ["parent"("xerces", "brooke"), "ancestor"("xerces", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("xerces", "brooke")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "damocles")
+// [evaluator]   Considering product ["parent"("xerces", "brooke"), "ancestor"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("xerces", "brooke")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("brooke", "damocles")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "damocles"), ("X", "xerces"), ("Z", "brooke")])
+// [evaluator]   Deduced fact "ancestor"("xerces", "damocles")
+// [evaluator]   Considering product ["parent"("xerces", "brooke"), "ancestor"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("xerces", "brooke")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "brooke")
+// [evaluator]   Considering product ["parent"("brooke", "damocles"), "ancestor"("xerces", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("brooke", "damocles")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "damocles")
+// [evaluator]   Considering product ["parent"("brooke", "damocles"), "ancestor"("brooke", "damocles")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("brooke", "damocles")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("brooke", "damocles")
+// [evaluator]   Considering product ["parent"("brooke", "damocles"), "ancestor"("xerces", "brooke")]
+
+// [evaluator]     Unifying subgoal "parent"("X", "Z") with fact "parent"("brooke", "damocles")
+// [evaluator]     Unifying subgoal "ancestor"("Z", "Y") with fact "ancestor"("xerces", "brooke")
+// [evaluator] New facts: @immut/hashmap.of([("parent", @immut/hashset.of(["parent"("xerces", "brooke"), "parent"("brooke", "damocles")])), ("ancestor", @immut/hashset.of(["ancestor"("xerces", "damocles"), "ancestor"("brooke", "damocles"), "ancestor"("xerces", "brooke")]))])

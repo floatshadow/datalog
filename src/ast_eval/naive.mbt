@@ -77,12 +77,10 @@ fn NaiveInterpreter::immediate_operator(
       let iterator = self.join_iterator(body, new_facts)
       while true {
         guard iterator.next() is Some(product) else { break }
-        self.tracer.log("  Considering product \{product}\n")
         let mut subst = Some(HashMap::new())
         for i = 0; i < product.length(); {
           let subgoal = body[i]
           let lit = product[i]
-          self.tracer.log("    Unifying subgoal \{subgoal} with fact \{lit}")
           subst = subst_mapM(subst, fn(s) { s.unify_literal(subgoal, lit) })
           continue i + 1
         }
@@ -114,7 +112,7 @@ fn NaiveInterpreter::immediate_operator(
 pub fn NaiveInterpreter::evaluate(
   self : NaiveInterpreter,
   stmts : List[@syntax.Statement],
-) -> Array[Literal] raise Failure {
+) -> Unit raise Failure {
   let mut arity = ArityMap::new()
   let mut rules = HashMap::new()
   let query = []
@@ -153,20 +151,23 @@ pub fn NaiveInterpreter::evaluate(
   }
 
   // answer queries
-  let results = []
   for q in query {
     println("query \{q}")
     let lits = match facts.get(q.predicate) {
       None => HashSet::new()
       Some(facts) => facts
     }
+    let query_result = []
     for lit in lits {
       let subst = HashMap::new()
       match subst.unify_literal(q, lit) {
         None => ()
-        Some(s) => results.push(lit.apply_subst(s))
+        Some(s) => query_result.push(lit.apply_subst(s))
       }
     }
+    query_result.sort()
+    for result in query_result {
+      println("\{Show::to_string(result)}")
+    }
   }
-  results
 }

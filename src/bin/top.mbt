@@ -92,10 +92,7 @@ fn main {
       opts.redirect_to_log,
     )
     let evaluator = @ast_eval.NaiveInterpreter::new(subtracer)
-    let results = evaluator.evaluate(stmts)
-    for result in results {
-      println("\{Show::to_string(result)}")
-    }
+    evaluator.evaluate(stmts)
   } catch {
     Failure(msg) => println("\{msg}")
     _ as err => println("\{err}")

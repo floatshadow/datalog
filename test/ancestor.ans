@@ -1,3 +1,3 @@
 query "ancestor"("xerces", "X")
-"ancestor"("xerces", "damocles")
 "ancestor"("xerces", "brooke")
+"ancestor"("xerces", "damocles")

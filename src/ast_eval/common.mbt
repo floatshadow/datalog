@@ -52,20 +52,20 @@ pub enum Constant {
   StringC(String)
   IntC(Int)
   BoolC(Bool)
-} derive(Eq, Hash)
+} derive(Compare, Eq, Hash)
 
 ///|
 pub enum Term {
   Var(String)
   Const(Constant)
-} derive(Eq, Hash)
+} derive(Compare, Eq, Hash)
 
 ///|
 pub struct Literal {
   predicate : String
   arity : Int
   terms : Array[Term]
-} derive(Eq, Hash)
+} derive(Compare, Eq, Hash)
 
 ///|
 pub struct Clause {

@@ -1,91 +1,87 @@
 // [parser] parsed test/trans.dl successfully
 // [evaluator] Naive iteration 0
-// [evaluator] Current facts: @immut/hashmap.of([])
-// [evaluator] Processing rule "r"("X", "Z") :- "r"("X", "Y"), "r"("Y", "Z").
-// [evaluator] Processing rule "r"(""a"", ""b"").
-// [evaluator]   Deduced fact "r"(""a"", ""b"")
-// [evaluator] Processing rule "r"(""b"", ""c"").
-// [evaluator]   Deduced fact "r"(""b"", ""c"")
-// [evaluator] Processing rule "r"(""c"", ""d"").
-// [evaluator]   Deduced fact "r"(""c"", ""d"")
-// [evaluator] Processing rule "r"(""d"", ""e"").
-// [evaluator]   Deduced fact "r"(""d"", ""e"")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""c"", ""d""), "r"(""b"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b"")]))])
+// [evaluator] Processing rule r(X, Z) :- r(X, Y), r(Y, Z).
+// [evaluator] Processing rule r("a", "b").
+// [evaluator]   Deduced fact r("a", "b")
+// [evaluator] Processing rule r("b", "c").
+// [evaluator]   Deduced fact r("b", "c")
+// [evaluator] Processing rule r("c", "d").
+// [evaluator]   Deduced fact r("c", "d")
+// [evaluator] Processing rule r("d", "e").
+// [evaluator]   Deduced fact r("d", "e")
+// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("c", "d"), r("b", "c"), r("d", "e"), r("a", "b")]))])
 // [evaluator] Naive iteration 1
-// [evaluator] Current facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""c"", ""d""), "r"(""b"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b"")]))])
-// [evaluator] Processing rule "r"("X", "Z") :- "r"("X", "Y"), "r"("Y", "Z").
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""c""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""c"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""b""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""b"", ""d"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""c"")])
-// [evaluator]   Deduced fact "r"(""a"", ""c"")
-// [evaluator] Processing rule "r"(""a"", ""b"").
-// [evaluator]   Deduced fact "r"(""a"", ""b"")
-// [evaluator] Processing rule "r"(""b"", ""c"").
-// [evaluator]   Deduced fact "r"(""b"", ""c"")
-// [evaluator] Processing rule "r"(""c"", ""d"").
-// [evaluator]   Deduced fact "r"(""c"", ""d"")
-// [evaluator] Processing rule "r"(""d"", ""e"").
-// [evaluator]   Deduced fact "r"(""d"", ""e"")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""c"", ""d""), "r"(""b"", ""c""), "r"(""b"", ""d""), "r"(""a"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b""), "r"(""c"", ""e"")]))])
+// [evaluator] Processing rule r(X, Z) :- r(X, Y), r(Y, Z).
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "c"), ("Z", "e")])
+// [evaluator]   Deduced fact r("c", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "b"), ("Z", "d")])
+// [evaluator]   Deduced fact r("b", "d")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "c")])
+// [evaluator]   Deduced fact r("a", "c")
+// [evaluator] Processing rule r("a", "b").
+// [evaluator]   Deduced fact r("a", "b")
+// [evaluator] Processing rule r("b", "c").
+// [evaluator]   Deduced fact r("b", "c")
+// [evaluator] Processing rule r("c", "d").
+// [evaluator]   Deduced fact r("c", "d")
+// [evaluator] Processing rule r("d", "e").
+// [evaluator]   Deduced fact r("d", "e")
+// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("c", "d"), r("b", "c"), r("b", "d"), r("a", "c"), r("d", "e"), r("a", "b"), r("c", "e")]))])
 // [evaluator] Naive iteration 2
-// [evaluator] Current facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""c"", ""d""), "r"(""b"", ""c""), "r"(""b"", ""d""), "r"(""a"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b""), "r"(""c"", ""e"")]))])
-// [evaluator] Processing rule "r"("X", "Z") :- "r"("X", "Y"), "r"("Y", "Z").
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""c""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""c"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""b""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""b"", ""d"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""b""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""b"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""b""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""b"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""a""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""a"", ""d"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""a""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""a"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""c"")])
-// [evaluator]   Deduced fact "r"(""a"", ""c"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""a"", ""d"")
-// [evaluator] Processing rule "r"(""a"", ""b"").
-// [evaluator]   Deduced fact "r"(""a"", ""b"")
-// [evaluator] Processing rule "r"(""b"", ""c"").
-// [evaluator]   Deduced fact "r"(""b"", ""c"")
-// [evaluator] Processing rule "r"(""c"", ""d"").
-// [evaluator]   Deduced fact "r"(""c"", ""d"")
-// [evaluator] Processing rule "r"(""d"", ""e"").
-// [evaluator]   Deduced fact "r"(""d"", ""e"")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""a"", ""d""), "r"(""a"", ""e""), "r"(""c"", ""d""), "r"(""b"", ""e""), "r"(""b"", ""c""), "r"(""b"", ""d""), "r"(""a"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b""), "r"(""c"", ""e"")]))])
+// [evaluator] Processing rule r(X, Z) :- r(X, Y), r(Y, Z).
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "c"), ("Z", "e")])
+// [evaluator]   Deduced fact r("c", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "b"), ("Z", "d")])
+// [evaluator]   Deduced fact r("b", "d")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "b"), ("Z", "e")])
+// [evaluator]   Deduced fact r("b", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "b"), ("Z", "e")])
+// [evaluator]   Deduced fact r("b", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "a"), ("Z", "d")])
+// [evaluator]   Deduced fact r("a", "d")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "a"), ("Z", "e")])
+// [evaluator]   Deduced fact r("a", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "c")])
+// [evaluator]   Deduced fact r("a", "c")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "d")])
+// [evaluator]   Deduced fact r("a", "d")
+// [evaluator] Processing rule r("a", "b").
+// [evaluator]   Deduced fact r("a", "b")
+// [evaluator] Processing rule r("b", "c").
+// [evaluator]   Deduced fact r("b", "c")
+// [evaluator] Processing rule r("c", "d").
+// [evaluator]   Deduced fact r("c", "d")
+// [evaluator] Processing rule r("d", "e").
+// [evaluator]   Deduced fact r("d", "e")
+// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("a", "d"), r("a", "e"), r("c", "d"), r("b", "e"), r("b", "c"), r("b", "d"), r("a", "c"), r("d", "e"), r("a", "b"), r("c", "e")]))])
 // [evaluator] Naive iteration 3
-// [evaluator] Current facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""a"", ""d""), "r"(""a"", ""e""), "r"(""c"", ""d""), "r"(""b"", ""e""), "r"(""b"", ""c""), "r"(""b"", ""d""), "r"(""a"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b""), "r"(""c"", ""e"")]))])
-// [evaluator] Processing rule "r"("X", "Z") :- "r"("X", "Y"), "r"("Y", "Z").
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""a""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""a"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""c""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""c"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""b""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""b"", ""d"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""b""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""b"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""d""), ("X", ""b""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""b"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""a""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""a"", ""d"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""c""), ("X", ""a""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""a"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""e"")])
-// [evaluator]   Deduced fact "r"(""a"", ""e"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""c"")])
-// [evaluator]   Deduced fact "r"(""a"", ""c"")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", ""b""), ("X", ""a""), ("Z", ""d"")])
-// [evaluator]   Deduced fact "r"(""a"", ""d"")
-// [evaluator] Processing rule "r"(""a"", ""b"").
-// [evaluator]   Deduced fact "r"(""a"", ""b"")
-// [evaluator] Processing rule "r"(""b"", ""c"").
-// [evaluator]   Deduced fact "r"(""b"", ""c"")
-// [evaluator] Processing rule "r"(""c"", ""d"").
-// [evaluator]   Deduced fact "r"(""c"", ""d"")
-// [evaluator] Processing rule "r"(""d"", ""e"").
-// [evaluator]   Deduced fact "r"(""d"", ""e"")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of(["r"(""a"", ""d""), "r"(""a"", ""e""), "r"(""c"", ""d""), "r"(""b"", ""e""), "r"(""b"", ""c""), "r"(""b"", ""d""), "r"(""a"", ""c""), "r"(""d"", ""e""), "r"(""a"", ""b""), "r"(""c"", ""e"")]))])
+// [evaluator] Processing rule r(X, Z) :- r(X, Y), r(Y, Z).
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "a"), ("Z", "e")])
+// [evaluator]   Deduced fact r("a", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "c"), ("Z", "e")])
+// [evaluator]   Deduced fact r("c", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "b"), ("Z", "d")])
+// [evaluator]   Deduced fact r("b", "d")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "b"), ("Z", "e")])
+// [evaluator]   Deduced fact r("b", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "d"), ("X", "b"), ("Z", "e")])
+// [evaluator]   Deduced fact r("b", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "a"), ("Z", "d")])
+// [evaluator]   Deduced fact r("a", "d")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "c"), ("X", "a"), ("Z", "e")])
+// [evaluator]   Deduced fact r("a", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "e")])
+// [evaluator]   Deduced fact r("a", "e")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "c")])
+// [evaluator]   Deduced fact r("a", "c")
+// [evaluator]   Found substitution @immut/hashmap.of([("Y", "b"), ("X", "a"), ("Z", "d")])
+// [evaluator]   Deduced fact r("a", "d")
+// [evaluator] Processing rule r("a", "b").
+// [evaluator]   Deduced fact r("a", "b")
+// [evaluator] Processing rule r("b", "c").
+// [evaluator]   Deduced fact r("b", "c")
+// [evaluator] Processing rule r("c", "d").
+// [evaluator]   Deduced fact r("c", "d")
+// [evaluator] Processing rule r("d", "e").
+// [evaluator]   Deduced fact r("d", "e")
+// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("a", "d"), r("a", "e"), r("c", "d"), r("b", "e"), r("b", "c"), r("b", "d"), r("a", "c"), r("d", "e"), r("a", "b"), r("c", "e")]))])

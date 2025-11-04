@@ -1,5 +1,13 @@
 // [parser] parsed test/ancestor.dl successfully
-// [evaluator] Naive iteration 0
+// [evaluator] Semi-naive iteration 0
+// [evaluator] Processing rule parent(xerces, brooke).
+// [evaluator]   Deduced fact parent(xerces, brooke)
+// [evaluator] Processing rule parent(brooke, damocles).
+// [evaluator]   Deduced fact parent(brooke, damocles)
+// [evaluator] Processing rule ancestor(X, Y) :- parent(X, Y).
+// [evaluator] Processing rule ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+// [evaluator] New delta facts: @immut/hashmap.of([("parent", @immut/hashset.of([parent(xerces, brooke), parent(brooke, damocles)]))])
+// [evaluator] Semi-naive iteration 1
 // [evaluator] Processing rule parent(xerces, brooke).
 // [evaluator]   Deduced fact parent(xerces, brooke)
 // [evaluator] Processing rule parent(brooke, damocles).
@@ -10,20 +18,22 @@
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", damocles), ("X", brooke)])
 // [evaluator]   Deduced fact ancestor(brooke, damocles)
 // [evaluator] Processing rule ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", damocles), ("X", xerces), ("Z", brooke)])
-// [evaluator]   Deduced fact ancestor(xerces, damocles)
-// [evaluator] New facts: @immut/hashmap.of([("parent", @immut/hashset.of([parent(xerces, brooke), parent(brooke, damocles)])), ("ancestor", @immut/hashset.of([ancestor(xerces, damocles), ancestor(brooke, damocles), ancestor(xerces, brooke)]))])
-// [evaluator] Naive iteration 1
+// [evaluator] New delta facts: @immut/hashmap.of([("ancestor", @immut/hashset.of([ancestor(brooke, damocles), ancestor(xerces, brooke)]))])
+// [evaluator] Semi-naive iteration 2
 // [evaluator] Processing rule parent(xerces, brooke).
 // [evaluator]   Deduced fact parent(xerces, brooke)
 // [evaluator] Processing rule parent(brooke, damocles).
 // [evaluator]   Deduced fact parent(brooke, damocles)
 // [evaluator] Processing rule ancestor(X, Y) :- parent(X, Y).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", brooke), ("X", xerces)])
-// [evaluator]   Deduced fact ancestor(xerces, brooke)
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", damocles), ("X", brooke)])
-// [evaluator]   Deduced fact ancestor(brooke, damocles)
 // [evaluator] Processing rule ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", damocles), ("X", xerces), ("Z", brooke)])
 // [evaluator]   Deduced fact ancestor(xerces, damocles)
-// [evaluator] New facts: @immut/hashmap.of([("parent", @immut/hashset.of([parent(xerces, brooke), parent(brooke, damocles)])), ("ancestor", @immut/hashset.of([ancestor(xerces, damocles), ancestor(brooke, damocles), ancestor(xerces, brooke)]))])
+// [evaluator] New delta facts: @immut/hashmap.of([("ancestor", @immut/hashset.of([ancestor(xerces, damocles)]))])
+// [evaluator] Semi-naive iteration 3
+// [evaluator] Processing rule parent(xerces, brooke).
+// [evaluator]   Deduced fact parent(xerces, brooke)
+// [evaluator] Processing rule parent(brooke, damocles).
+// [evaluator]   Deduced fact parent(brooke, damocles)
+// [evaluator] Processing rule ancestor(X, Y) :- parent(X, Y).
+// [evaluator] Processing rule ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+// [evaluator] New delta facts: @immut/hashmap.of([])

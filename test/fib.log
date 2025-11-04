@@ -1,5 +1,5 @@
 // [parser] parsed test/fib.dl successfully
-// [evaluator] Naive iteration 0
+// [evaluator] Semi-naive iteration 0
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
@@ -63,8 +63,8 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("1", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 1
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("1", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
+// [evaluator] Semi-naive iteration 1
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
@@ -130,8 +130,8 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 2
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1")]))])
+// [evaluator] Semi-naive iteration 2
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
@@ -139,8 +139,6 @@
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
 // [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -199,19 +197,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("3", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 3
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("3", "2")]))])
+// [evaluator] Semi-naive iteration 3
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
 // [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -270,19 +264,13 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("4", "0"), f("3", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 4
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("4", "0")]))])
+// [evaluator] Semi-naive iteration 4
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
 // [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
@@ -343,23 +331,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("3", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 5
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("5", "2")]))])
+// [evaluator] Semi-naive iteration 5
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
 // [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -418,25 +398,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("6", "2"), f("3", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 6
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("6", "2")]))])
+// [evaluator] Semi-naive iteration 6
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
 // [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -495,27 +465,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("6", "2"), f("3", "2"), f("7", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 7
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("7", "1")]))])
+// [evaluator] Semi-naive iteration 7
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
 // [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -574,29 +532,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("8", "0"), f("6", "2"), f("3", "2"), f("7", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 8
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("8", "0")]))])
+// [evaluator] Semi-naive iteration 8
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
 // [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -655,31 +599,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("8", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 9
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("9", "1")]))])
+// [evaluator] Semi-naive iteration 9
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
 // [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -738,33 +666,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("10", "1"), f("8", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 10
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("10", "1")]))])
+// [evaluator] Semi-naive iteration 10
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
 // [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -823,35 +733,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("10", "1"), f("8", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 11
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("11", "2")]))])
+// [evaluator] Semi-naive iteration 11
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
 // [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -910,37 +800,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("4", "0"), f("10", "1"), f("8", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 12
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("12", "0")]))])
+// [evaluator] Semi-naive iteration 12
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
 // [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -999,39 +867,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("4", "0"), f("10", "1"), f("8", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 13
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("13", "2")]))])
+// [evaluator] Semi-naive iteration 13
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
 // [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1090,41 +934,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 14
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("14", "2")]))])
+// [evaluator] Semi-naive iteration 14
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
 // [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1183,43 +1001,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 15
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("15", "1")]))])
+// [evaluator] Semi-naive iteration 15
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
 // [evaluator]   Deduced fact f("16", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1278,45 +1068,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 16
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("16", "0")]))])
+// [evaluator] Semi-naive iteration 16
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
-// [evaluator]   Deduced fact f("16", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "15"), ("I", "17"), ("X", "0"), ("Prev", "16"), ("R", "1")])
 // [evaluator]   Deduced fact f("17", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1375,47 +1135,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("17", "1"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 17
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("17", "1")]))])
+// [evaluator] Semi-naive iteration 17
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
-// [evaluator]   Deduced fact f("16", "0")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "16"), ("I", "18"), ("X", "1"), ("Prev", "17"), ("R", "1")])
 // [evaluator]   Deduced fact f("18", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "15"), ("I", "17"), ("X", "0"), ("Prev", "16"), ("R", "1")])
-// [evaluator]   Deduced fact f("17", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1474,49 +1202,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("17", "1"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("18", "1"), f("3", "2"), f("7", "1"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 18
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("18", "1")]))])
+// [evaluator] Semi-naive iteration 18
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
-// [evaluator]   Deduced fact f("16", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "16"), ("I", "18"), ("X", "1"), ("Prev", "17"), ("R", "1")])
-// [evaluator]   Deduced fact f("18", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "17"), ("I", "19"), ("X", "1"), ("Prev", "18"), ("R", "2")])
 // [evaluator]   Deduced fact f("19", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "15"), ("I", "17"), ("X", "0"), ("Prev", "16"), ("R", "1")])
-// [evaluator]   Deduced fact f("17", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1575,51 +1269,15 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("17", "1"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("18", "1"), f("3", "2"), f("7", "1"), f("19", "2"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 19
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("19", "2")]))])
+// [evaluator] Semi-naive iteration 19
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
-// [evaluator]   Deduced fact f("16", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "16"), ("I", "18"), ("X", "1"), ("Prev", "17"), ("R", "1")])
-// [evaluator]   Deduced fact f("18", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
 // [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "18"), ("I", "20"), ("X", "2"), ("Prev", "19"), ("R", "0")])
 // [evaluator]   Deduced fact f("20", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "17"), ("I", "19"), ("X", "1"), ("Prev", "18"), ("R", "2")])
-// [evaluator]   Deduced fact f("19", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "15"), ("I", "17"), ("X", "0"), ("Prev", "16"), ("R", "1")])
-// [evaluator]   Deduced fact f("17", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1678,51 +1336,13 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("17", "1"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("18", "1"), f("3", "2"), f("20", "0"), f("7", "1"), f("19", "2"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
-// [evaluator] Naive iteration 20
+// [evaluator] New delta facts: @immut/hashmap.of([("f", @immut/hashset.of([f("20", "0")]))])
+// [evaluator] Semi-naive iteration 20
 // [evaluator] Processing rule f("0", "0").
 // [evaluator]   Deduced fact f("0", "0")
 // [evaluator] Processing rule f("1", "1").
 // [evaluator]   Deduced fact f("1", "1")
 // [evaluator] Processing rule f(I, R) :- succ(Prev, I), succ(Pprev, Prev), f(Prev, X), f(Pprev, Y), plus_mod(X, Y, R).
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "1"), ("I", "3"), ("X", "1"), ("Prev", "2"), ("R", "2")])
-// [evaluator]   Deduced fact f("3", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "12"), ("I", "14"), ("X", "2"), ("Prev", "13"), ("R", "2")])
-// [evaluator]   Deduced fact f("14", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "5"), ("I", "7"), ("X", "2"), ("Prev", "6"), ("R", "1")])
-// [evaluator]   Deduced fact f("7", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "14"), ("I", "16"), ("X", "1"), ("Prev", "15"), ("R", "0")])
-// [evaluator]   Deduced fact f("16", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "16"), ("I", "18"), ("X", "1"), ("Prev", "17"), ("R", "1")])
-// [evaluator]   Deduced fact f("18", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "8"), ("I", "10"), ("X", "1"), ("Prev", "9"), ("R", "1")])
-// [evaluator]   Deduced fact f("10", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "13"), ("I", "15"), ("X", "2"), ("Prev", "14"), ("R", "1")])
-// [evaluator]   Deduced fact f("15", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "7"), ("I", "9"), ("X", "0"), ("Prev", "8"), ("R", "1")])
-// [evaluator]   Deduced fact f("9", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "9"), ("I", "11"), ("X", "1"), ("Prev", "10"), ("R", "2")])
-// [evaluator]   Deduced fact f("11", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "2"), ("I", "4"), ("X", "2"), ("Prev", "3"), ("R", "0")])
-// [evaluator]   Deduced fact f("4", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "0"), ("I", "2"), ("X", "1"), ("Prev", "1"), ("R", "1")])
-// [evaluator]   Deduced fact f("2", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "0"), ("Pprev", "4"), ("I", "6"), ("X", "2"), ("Prev", "5"), ("R", "2")])
-// [evaluator]   Deduced fact f("6", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "10"), ("I", "12"), ("X", "2"), ("Prev", "11"), ("R", "0")])
-// [evaluator]   Deduced fact f("12", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "18"), ("I", "20"), ("X", "2"), ("Prev", "19"), ("R", "0")])
-// [evaluator]   Deduced fact f("20", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "17"), ("I", "19"), ("X", "1"), ("Prev", "18"), ("R", "2")])
-// [evaluator]   Deduced fact f("19", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "1"), ("Pprev", "15"), ("I", "17"), ("X", "0"), ("Prev", "16"), ("R", "1")])
-// [evaluator]   Deduced fact f("17", "1")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "11"), ("I", "13"), ("X", "0"), ("Prev", "12"), ("R", "2")])
-// [evaluator]   Deduced fact f("13", "2")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "6"), ("I", "8"), ("X", "1"), ("Prev", "7"), ("R", "0")])
-// [evaluator]   Deduced fact f("8", "0")
-// [evaluator]   Found substitution @immut/hashmap.of([("Y", "2"), ("Pprev", "3"), ("I", "5"), ("X", "0"), ("Prev", "4"), ("R", "2")])
-// [evaluator]   Deduced fact f("5", "2")
 // [evaluator] Processing rule plus_mod("0", "0", "0").
 // [evaluator]   Deduced fact plus_mod("0", "0", "0")
 // [evaluator] Processing rule plus_mod("0", "1", "1").
@@ -1781,4 +1401,4 @@
 // [evaluator]   Deduced fact succ("18", "19")
 // [evaluator] Processing rule succ("19", "20").
 // [evaluator]   Deduced fact succ("19", "20")
-// [evaluator] New facts: @immut/hashmap.of([("f", @immut/hashset.of([f("2", "1"), f("1", "1"), f("5", "2"), f("13", "2"), f("17", "1"), f("4", "0"), f("10", "1"), f("14", "2"), f("8", "0"), f("16", "0"), f("12", "0"), f("6", "2"), f("9", "1"), f("15", "1"), f("18", "1"), f("3", "2"), f("20", "0"), f("7", "1"), f("19", "2"), f("11", "2"), f("0", "0")])), ("plus_mod", @immut/hashset.of([plus_mod("1", "0", "1"), plus_mod("1", "1", "2"), plus_mod("2", "0", "2"), plus_mod("2", "2", "1"), plus_mod("2", "1", "0"), plus_mod("0", "0", "0"), plus_mod("0", "1", "1"), plus_mod("1", "2", "0"), plus_mod("0", "2", "2")])), ("succ", @immut/hashset.of([succ("2", "3"), succ("13", "14"), succ("6", "7"), succ("15", "16"), succ("17", "18"), succ("9", "10"), succ("14", "15"), succ("8", "9"), succ("10", "11"), succ("3", "4"), succ("1", "2"), succ("5", "6"), succ("0", "1"), succ("11", "12"), succ("19", "20"), succ("18", "19"), succ("16", "17"), succ("12", "13"), succ("7", "8"), succ("4", "5")]))])
+// [evaluator] New delta facts: @immut/hashmap.of([])

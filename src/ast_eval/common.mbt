@@ -122,12 +122,8 @@ fn Literal::is_fact(self : Literal) -> Bool {
 ///|
 pub impl Show for Constant with output(self, logger) {
   match self {
-    IdentC(id) => Show::output(id, logger)
-    StringC(str) => {
-      logger.write_char('\"')
-      Show::output(str, logger)
-      logger.write_char('\"')
-    }
+    IdentC(id) => logger.write_string(id)
+    StringC(str) => Show::output(str, logger)
     IntC(i) => Show::output(i, logger)
     BoolC(b) => Show::output(b, logger)
   }
@@ -136,14 +132,14 @@ pub impl Show for Constant with output(self, logger) {
 ///|
 pub impl Show for Term with output(self, logger) {
   match self {
-    Var(name) => Show::output(name, logger)
+    Var(name) => logger.write_string(name)
     Const(c) => Show::output(c, logger)
   }
 }
 
 ///|
 pub impl Show for Literal with output(self, logger) {
-  Show::output(self.predicate, logger)
+  logger.write_string(self.predicate)
   if self.arity > 0 {
     logger.write_char('(')
     for i = 0; i < self.terms.length(); {
@@ -183,9 +179,9 @@ typealias HashMap[String, HashSet[Literal]] as Database
 typealias HashMap[String, Int] as ArityMap
 
 ///|
-// fn Database::copy(self : Database) -> Database {
-//   self.map_with_key(fn(_k, v) { v.copy() })
-// }
+fn Database::merge(self : Database, other : Database) -> Database {
+  self.union_with(other, fn(_, a, b) { a.union(b) })
+}
 
 ///|
 fn ArityMap::check(

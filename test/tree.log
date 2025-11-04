@@ -1,5 +1,20 @@
 // [parser] parsed test/tree.dl successfully
-// [evaluator] Naive iteration 0
+// [evaluator] Semi-naive iteration 0
+// [evaluator] Processing rule r("1", "a", "2").
+// [evaluator]   Deduced fact r("1", "a", "2")
+// [evaluator] Processing rule r("2", "b", "3").
+// [evaluator]   Deduced fact r("2", "b", "3")
+// [evaluator] Processing rule r("3", "a", "4").
+// [evaluator]   Deduced fact r("3", "a", "4")
+// [evaluator] Processing rule r("4", "a", "5").
+// [evaluator]   Deduced fact r("4", "a", "5")
+// [evaluator] Processing rule r("5", "a", "6").
+// [evaluator]   Deduced fact r("5", "a", "6")
+// [evaluator] Processing rule s(X1, X3) :- t(X1, X2), r(X2, Y, X3).
+// [evaluator] Processing rule t(X1, X4) :- r(X1, Y, X2), r(X2, Z, X3), t(X3, X4).
+// [evaluator] Processing rule t(X1, X3) :- r(X1, A, X2), r(X2, A, X3).
+// [evaluator] New delta facts: @immut/hashmap.of([("r", @immut/hashset.of([r("3", "a", "4"), r("2", "b", "3"), r("1", "a", "2"), r("5", "a", "6"), r("4", "a", "5")]))])
+// [evaluator] Semi-naive iteration 1
 // [evaluator] Processing rule r("1", "a", "2").
 // [evaluator]   Deduced fact r("1", "a", "2")
 // [evaluator] Processing rule r("2", "b", "3").
@@ -17,8 +32,8 @@
 // [evaluator]   Deduced fact t("3", "5")
 // [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("A", "a"), ("X3", "6"), ("X1", "4")])
 // [evaluator]   Deduced fact t("4", "6")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("3", "a", "4"), r("2", "b", "3"), r("1", "a", "2"), r("5", "a", "6"), r("4", "a", "5")])), ("t", @immut/hashset.of([t("3", "5"), t("4", "6")]))])
-// [evaluator] Naive iteration 1
+// [evaluator] New delta facts: @immut/hashmap.of([("t", @immut/hashset.of([t("3", "5"), t("4", "6")]))])
+// [evaluator] Semi-naive iteration 2
 // [evaluator] Processing rule r("1", "a", "2").
 // [evaluator]   Deduced fact r("1", "a", "2")
 // [evaluator] Processing rule r("2", "b", "3").
@@ -38,12 +53,8 @@
 // [evaluator]   Found substitution @immut/hashmap.of([("X2", "2"), ("Y", "a"), ("X3", "3"), ("X4", "5"), ("Z", "b"), ("X1", "1")])
 // [evaluator]   Deduced fact t("1", "5")
 // [evaluator] Processing rule t(X1, X3) :- r(X1, A, X2), r(X2, A, X3).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "4"), ("A", "a"), ("X3", "5"), ("X1", "3")])
-// [evaluator]   Deduced fact t("3", "5")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("A", "a"), ("X3", "6"), ("X1", "4")])
-// [evaluator]   Deduced fact t("4", "6")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("3", "a", "4"), r("2", "b", "3"), r("1", "a", "2"), r("5", "a", "6"), r("4", "a", "5")])), ("s", @immut/hashset.of([s("3", "6")])), ("t", @immut/hashset.of([t("3", "5"), t("4", "6"), t("2", "6"), t("1", "5")]))])
-// [evaluator] Naive iteration 2
+// [evaluator] New delta facts: @immut/hashmap.of([("s", @immut/hashset.of([s("3", "6")])), ("t", @immut/hashset.of([t("2", "6"), t("1", "5")]))])
+// [evaluator] Semi-naive iteration 3
 // [evaluator] Processing rule r("1", "a", "2").
 // [evaluator]   Deduced fact r("1", "a", "2")
 // [evaluator] Processing rule r("2", "b", "3").
@@ -55,22 +66,12 @@
 // [evaluator] Processing rule r("5", "a", "6").
 // [evaluator]   Deduced fact r("5", "a", "6")
 // [evaluator] Processing rule s(X1, X3) :- t(X1, X2), r(X2, Y, X3).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("Y", "a"), ("X3", "6"), ("X1", "3")])
-// [evaluator]   Deduced fact s("3", "6")
 // [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("Y", "a"), ("X3", "6"), ("X1", "1")])
 // [evaluator]   Deduced fact s("1", "6")
 // [evaluator] Processing rule t(X1, X4) :- r(X1, Y, X2), r(X2, Z, X3), t(X3, X4).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "3"), ("Y", "b"), ("X3", "4"), ("X4", "6"), ("Z", "a"), ("X1", "2")])
-// [evaluator]   Deduced fact t("2", "6")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "2"), ("Y", "a"), ("X3", "3"), ("X4", "5"), ("Z", "b"), ("X1", "1")])
-// [evaluator]   Deduced fact t("1", "5")
 // [evaluator] Processing rule t(X1, X3) :- r(X1, A, X2), r(X2, A, X3).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "4"), ("A", "a"), ("X3", "5"), ("X1", "3")])
-// [evaluator]   Deduced fact t("3", "5")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("A", "a"), ("X3", "6"), ("X1", "4")])
-// [evaluator]   Deduced fact t("4", "6")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("3", "a", "4"), r("2", "b", "3"), r("1", "a", "2"), r("5", "a", "6"), r("4", "a", "5")])), ("s", @immut/hashset.of([s("1", "6"), s("3", "6")])), ("t", @immut/hashset.of([t("3", "5"), t("4", "6"), t("2", "6"), t("1", "5")]))])
-// [evaluator] Naive iteration 3
+// [evaluator] New delta facts: @immut/hashmap.of([("s", @immut/hashset.of([s("1", "6")]))])
+// [evaluator] Semi-naive iteration 4
 // [evaluator] Processing rule r("1", "a", "2").
 // [evaluator]   Deduced fact r("1", "a", "2")
 // [evaluator] Processing rule r("2", "b", "3").
@@ -82,18 +83,6 @@
 // [evaluator] Processing rule r("5", "a", "6").
 // [evaluator]   Deduced fact r("5", "a", "6")
 // [evaluator] Processing rule s(X1, X3) :- t(X1, X2), r(X2, Y, X3).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("Y", "a"), ("X3", "6"), ("X1", "3")])
-// [evaluator]   Deduced fact s("3", "6")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("Y", "a"), ("X3", "6"), ("X1", "1")])
-// [evaluator]   Deduced fact s("1", "6")
 // [evaluator] Processing rule t(X1, X4) :- r(X1, Y, X2), r(X2, Z, X3), t(X3, X4).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "3"), ("Y", "b"), ("X3", "4"), ("X4", "6"), ("Z", "a"), ("X1", "2")])
-// [evaluator]   Deduced fact t("2", "6")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "2"), ("Y", "a"), ("X3", "3"), ("X4", "5"), ("Z", "b"), ("X1", "1")])
-// [evaluator]   Deduced fact t("1", "5")
 // [evaluator] Processing rule t(X1, X3) :- r(X1, A, X2), r(X2, A, X3).
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "4"), ("A", "a"), ("X3", "5"), ("X1", "3")])
-// [evaluator]   Deduced fact t("3", "5")
-// [evaluator]   Found substitution @immut/hashmap.of([("X2", "5"), ("A", "a"), ("X3", "6"), ("X1", "4")])
-// [evaluator]   Deduced fact t("4", "6")
-// [evaluator] New facts: @immut/hashmap.of([("r", @immut/hashset.of([r("3", "a", "4"), r("2", "b", "3"), r("1", "a", "2"), r("5", "a", "6"), r("4", "a", "5")])), ("s", @immut/hashset.of([s("1", "6"), s("3", "6")])), ("t", @immut/hashset.of([t("3", "5"), t("4", "6"), t("2", "6"), t("1", "5")]))])
+// [evaluator] New delta facts: @immut/hashmap.of([])

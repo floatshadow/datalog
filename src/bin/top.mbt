@@ -1,13 +1,25 @@
 ///|
+enum BottomUpStrategy {
+  Naive
+  SemiNaive
+}
+
+///|
 struct Options {
   mut file : String?
   mut output_to_console : Bool
   mut redirect_to_log : Bool
+  mut bottom_up_strategy : BottomUpStrategy
 }
 
 ///|
 fn Options::new() -> Options {
-  Options::{ file: None, output_to_console: false, redirect_to_log: true }
+  Options::{
+    file: None,
+    output_to_console: false,
+    redirect_to_log: true,
+    bottom_up_strategy: BottomUpStrategy::SemiNaive,
+  }
 }
 
 ///|
@@ -46,6 +58,19 @@ fn main {
         "-rtl",
         @ArgParser.Unit(fn() { opts.redirect_to_log = true }),
         "",
+      ),
+      (
+        "--bottom-up-strategy",
+        "-bus",
+        @ArgParser.String(fn(s) {
+          match s {
+            "naive" => opts.bottom_up_strategy = BottomUpStrategy::Naive
+            "semi-naive" =>
+              opts.bottom_up_strategy = BottomUpStrategy::SemiNaive
+            _ => abort("unknown bottom-up strategy: \{s}")
+          }
+        }),
+        "set bottom-up evaluation strategy (naive, semi-naive)",
       ),
     ],
     fn(s) {
@@ -91,8 +116,11 @@ fn main {
       opts.output_to_console,
       opts.redirect_to_log,
     )
-    let evaluator = @ast_eval.NaiveInterpreter::new(subtracer)
-    evaluator.evaluate(stmts)
+    let evaluator = @ast_eval.Interpreter::new(subtracer)
+    match opts.bottom_up_strategy {
+      BottomUpStrategy::Naive => evaluator.naive_evaluate(stmts)
+      BottomUpStrategy::SemiNaive => evaluator.semi_naive_evaluate(stmts)
+    }
   } catch {
     Failure(msg) => println("\{msg}")
     _ as err => println("\{err}")
